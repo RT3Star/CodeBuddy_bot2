@@ -1,0 +1,752 @@
+{
+  "Lambda": {
+    "easy": [
+      {
+        "question": "Що таке lambda-функція в Python?",
+        "options": ["Анонімна функція", "Іменована функція", "Метод класу", "Декоратор"],
+        "answer": 0,
+        "explanation": "Lambda-функції є анонімними (без імені) і можуть містити лише один вираз",
+        "code": "square = lambda x: x * x\nprint(square(5))  # 25"
+      },
+      {
+        "question": "Як викликати lambda-функцію?",
+        "options": ["Присвоїти змінній або викликати безпосередньо", "Тільки через присвоєння змінній", "Тільки безпосередньо", "Через спеціальний метод"],
+        "answer": 0,
+        "explanation": "Lambda-функції можна викликати безпосередньо або присвоїти змінній",
+        "code": "(lambda x, y: x + y)(3, 4)  # 7"
+      }
+    ],
+    "medium": [
+      {
+        "question": "Як використати lambda з filter()?",
+        "options": ["lambda визначає умову фільтрації", "lambda сортує елементи", "lambda створює список", "lambda обробляє помилки"],
+        "answer": 0,
+        "explanation": "filter() використовує lambda для фільтрації елементів за певною умовою",
+        "code": "numbers = [1, 2, 3, 4, 5]\neven = list(filter(lambda x: x % 2 == 0, numbers))  # [2, 4]"
+      },
+      {
+        "question": "Як використати lambda з map()?",
+        "options": ["lambda визначає операцію для кожного елемента", "lambda фільтрує елементи", "lambda групує елементи", "lambda сортує елементи"],
+        "answer": 0,
+        "explanation": "map() використовує lambda для застосування операції до кожного елемента",
+        "code": "numbers = [1, 2, 3]\nsquared = list(map(lambda x: x**2, numbers))  # [1, 4, 9]"
+      }
+    ],
+    "hard": [
+      {
+        "question": "Як використати lambda з reduce()?",
+        "options": ["lambda визначає операцію накопичення", "lambda фільтрує елементи", "lambda перетворює тип даних", "lambda обробляє винятки"],
+        "answer": 0,
+        "explanation": "reduce() використовує lambda для послідовного накопичення результату",
+        "code": "from functools import reduce\nnumbers = [1, 2, 3, 4]\nproduct = reduce(lambda x, y: x * y, numbers)  # 24"
+      },
+      {
+        "question": "Які обмеження lambda-функцій?",
+        "options": ["Не можуть містити кілька виразів", "Не можуть приймати аргументи", "Не можуть повертати значення", "Не можуть використовуватись у циклах"],
+        "answer": 0,
+        "explanation": "Lambda-функції обмежені одним виразом і не можуть містити складну логіку",
+        "code": "# lambda x: (y = x + 1; y * 2)  # Недійсно - кілька виразів"
+      }
+    ]
+  },
+  "List comprehension": {
+    "easy": [
+      {
+        "question": "Що таке list comprehension?",
+        "options": ["Стислий спосіб створення списків", "Метод сортування списків", "Функція для роботи зі списками", "Тип даних списку"],
+        "answer": 0,
+        "explanation": "List comprehension дозволяє створювати списки в один рядок",
+        "code": "squares = [x**2 for x in range(5)]  # [0, 1, 4, 9, 16]"
+      },
+      {
+        "question": "Як створити список чисел від 0 до 4?",
+        "options": ["Використати range() у comprehension", "Використати цикл for", "Використати функцію list()", "Використати метод append()"],
+        "answer": 0,
+        "explanation": "List comprehension з range() - найефективніший спосіб",
+        "code": "numbers = [x for x in range(5)]  # [0, 1, 2, 3, 4]"
+      }
+    ],
+    "medium": [
+      {
+        "question": "Як додати умову до list comprehension?",
+        "options": ["Використати if в кінці", "Використати where", "Використати when", "Використати condition"],
+        "answer": 0,
+        "explanation": "Умова додається за допомогою if в кінці comprehension",
+        "code": "even_squares = [x**2 for x in range(10) if x % 2 == 0]  # [0, 4, 16, 36, 64]"
+      },
+      {
+        "question": "Як створити список пар чисел?",
+        "options": ["Використати вкладені цикли", "Використати функцію zip()", "Використати метод combinations()", "Використати оператор *"],
+        "answer": 0,
+        "explanation": "Вкладені цикли дозволяють створювати пари елементів",
+        "code": "pairs = [(x, y) for x in range(2) for y in range(2)]  # [(0,0), (0,1), (1,0), (1,1)]"
+      }
+    ],
+    "hard": [
+      {
+        "question": "Як створити flattened list?",
+        "options": ["Використати вкладені цикли у comprehension", "Використати рекурсію", "Використати map()", "Використати filter()"],
+        "answer": 0,
+        "explanation": "Для flattening використовують вкладені цикли у comprehension",
+        "code": "matrix = [[1, 2], [3, 4]]\nflat = [x for row in matrix for x in row]  # [1, 2, 3, 4]"
+      },
+      {
+        "question": "Як використати ternary operator у comprehension?",
+        "options": ["Використати if-else перед for", "Використати case", "Використати switch", "Використати where"],
+        "answer": 0,
+        "explanation": "Ternary operator (if-else) використовується перед циклом for",
+        "code": "values = [x if x > 0 else 0 for x in [-1, 2, -3, 4]]  # [0, 2, 0, 4]"
+      }
+    ]
+  },
+  "Decorators": {
+    "easy": [
+      {
+        "question": "Що таке декоратор?",
+        "options": ["Функція, яка модифікує іншу функцію", "Спеціальний метод класу", "Тип даних", "Модуль Python"],
+        "answer": 0,
+        "explanation": "Декоратори дозволяють модифікувати поведінку функцій без зміни їх коду",
+        "code": "@my_decorator\ndef my_func():\n    pass"
+      },
+      {
+        "question": "Як створити простий декоратор?",
+        "options": ["Функція, яка приймає функцію і повертає нову", "Клас з методом __call__", "Спеціальний синтаксис Python", "Модуль з готовими функціями"],
+        "answer": 0,
+        "explanation": "Декоратор - це функція, яка приймає функцію і повертає нову функцію",
+        "code": "def decorator(func):\n    def wrapper():\n        return func()\n    return wrapper"
+      }
+    ],
+    "medium": [
+      {
+        "question": "Як передати аргументи через декоратор?",
+        "options": ["Використати *args та **kwargs", "Використати спеціальні параметри", "Використати глобальні змінні", "Не можна передавати"],
+        "answer": 0,
+        "explanation": "Для передачі аргументів використовують *args та **kwargs",
+        "code": "def decorator(func):\n    def wrapper(*args, **kwargs):\n        return func(*args, **kwargs)\n    return wrapper"
+      },
+      {
+        "question": "Як зробити декоратор з параметрами?",
+        "options": ["Три рівні вкладених функцій", "Два рівні вкладених функцій", "Спеціальний синтаксис @decorator()", "Використання класів"],
+        "answer": 0,
+        "explanation": "Декоратор з параметрами потребує трьох рівнів вкладених функцій",
+        "code": "def repeat(n):\n    def decorator(func):\n        def wrapper(*args, **kwargs):\n            for _ in range(n):\n                result = func(*args, **kwargs)\n            return result\n        return wrapper\n    return decorator"
+      }
+    ],
+    "hard": [
+      {
+        "question": "Як зберегти метадані функції?",
+        "options": ["Використати @functools.wraps", "Використати @metadata", "Використати @preserve", "Автоматично зберігаються"],
+        "answer": 0,
+        "explanation": "@functools.wraps зберігає метадані оригінальної функції",
+        "code": "import functools\ndef decorator(func):\n    @functools.wraps(func)\n    def wrapper(*args, **kwargs):\n        return func(*args, **kwargs)\n    return wrapper"
+      },
+      {
+        "question": "Як створити class-based декоратор?",
+        "options": ["Клас з методом __call__", "Клас з методом __decorate__", "Клас з методом __wrap__", "Спеціальний синтаксис @class_decorator"],
+        "answer": 0,
+        "explanation": "Class-based декоратор реалізує метод __call__",
+        "code": "class Decorator:\n    def __init__(self, func):\n        self.func = func\n    def __call__(self, *args, **kwargs):\n        return self.func(*args, **kwargs)"
+      }
+    ]
+  },
+  "Generators": {
+    "easy": [
+      {
+        "question": "Що таке генератор?",
+        "options": ["Функція з yield", "Функція з return", "Метод ітерації", "Тип циклу"],
+        "answer": 0,
+        "explanation": "Генератори використовують yield для повернення значень по одному",
+        "code": "def gen():\n    yield 1\n    yield 2\n    yield 3"
+      },
+      {
+        "question": "Як отримати значення з генератора?",
+        "options": ["Використати next() або for loop", "Використати get()", "Використати extract()", "Використати value()"],
+        "answer": 0,
+        "explanation": "Значення з генератора отримують через next() або ітерацію for",
+        "code": "g = gen()\nprint(next(g))  # 1\nprint(next(g))  # 2"
+      }
+    ],
+    "medium": [
+      {
+        "question": "Як створити generator expression?",
+        "options": ["Використати круглі дужки", "Використати квадратні дужки", "Використати фігурні дужки", "Використати спеціальний синтаксис"],
+        "answer": 0,
+        "explanation": "Generator expression використовує круглі дужки",
+        "code": "gen_exp = (x**2 for x in range(5))\nprint(list(gen_exp))  # [0, 1, 4, 9, 16]"
+      },
+      {
+        "question": "Яка перевага генераторів?",
+        "options": ["Економія пам'яті", "Швидкість виконання", "Простота використання", "Автоматична оптимізація"],
+        "answer": 0,
+        "explanation": "Генератори економлять пам'ять, генеруючи значення на льоту",
+        "code": "# Генератор не зберігає всі значення в пам'яті одразу"
+      }
+    ],
+    "hard": [
+      {
+        "question": "Як відправити значення в генератор?",
+        "options": ["Використати send()", "Використати put()", "Використати push()", "Використати input()"],
+        "answer": 0,
+        "explanation": "Метод send() дозволяє відправляти значення в генератор",
+        "code": "def gen():\n    x = yield\n    print(f'Received: {x}')\n\ng = gen()\nnext(g)  # Запускаємо генератор\ng.send(10)  # Received: 10"
+      },
+      {
+        "question": "Як закрити генератор?",
+        "options": ["Використати close()", "Використати stop()", "Використати exit()", "Використати break"],
+        "answer": 0,
+        "explanation": "Метод close() зупиняє виконання генератора",
+        "code": "g = gen()\nnext(g)\ng.close()  # Зупиняємо генератор"
+      }
+    ]
+  },
+  "Context managers": {
+    "easy": [
+      {
+        "question": "Що таке контекстний менеджер?",
+        "options": ["Об'єкт для керування ресурсами", "Функція для керування пам'яттю", "Метод для обробки помилок", "Клас для керування процесами"],
+        "answer": 0,
+        "explanation": "Контекстні менеджери керують ресурсами (файли, з'єднання тощо)",
+        "code": "with open('file.txt', 'r') as f:\n    content = f.read()"
+      },
+      {
+        "question": "Як створити простий контекстний менеджер?",
+        "options": ["Використати __enter__ та __exit__", "Використати @contextmanager", "Використати спеціальний синтаксис", "Використати менеджер ресурсів"],
+        "answer": 0,
+        "explanation": "Контекстні менеджери реалізують методи __enter__ та __exit__",
+        "code": "class MyContext:\n    def __enter__(self):\n        return self\n    def __exit__(self, exc_type, exc_val, exc_tb):\n        pass"
+      }
+    ],
+    "medium": [
+      {
+        "question": "Як створити контекстний менеджер з contextlib?",
+        "options": ["Використати @contextmanager", "Використати contextlib.Manager", "Використати contextlib.context", "Використати @context"],
+        "answer": 0,
+        "explanation": "Декоратор @contextmanager спрощує створення контекстних менеджерів",
+        "code": "from contextlib import contextmanager\n\n@contextmanager\ndef my_context():\n    try:\n        yield\n    finally:\n        pass"
+      },
+      {
+        "question": "Як обробити помилки в контекстному менеджері?",
+        "options": ["В методі __exit__", "В методі __enter__", "В спеціальному методі", "В блоці try/except"],
+        "answer": 0,
+        "explanation": "Метод __exit__ отримує інформацію про помилки для обробки",
+        "code": "def __exit__(self, exc_type, exc_val, exc_tb):\n    if exc_type:\n        print(f'Error: {exc_val}')\n    return True  # Приглушити помилку"
+      }
+    ],
+    "hard": [
+      {
+        "question": "Як створити асинхронний контекстний менеджер?",
+        "options": ["Реалізувати __aenter__ та __aexit__", "Реалізувати __enter_async__ та __exit_async__", "Використати @async_contextmanager", "Використати спеціальний синтаксис"],
+        "answer": 0,
+        "explanation": "Асинхронні контекстні менеджери використовують __aenter__ та __aexit__",
+        "code": "class AsyncContext:\n    async def __aenter__(self):\n        return self\n    async def __aexit__(self, exc_type, exc_val, exc_tb):\n        pass"
+      },
+      {
+        "question": "Як використати кілька контекстних менеджерів?",
+        "options": ["Використати вкладені with або contextlib.ExitStack", "Використати спеціальний синтаксис", "Використати менеджер менеджерів", "Не можна використовувати кілька"],
+        "answer": 0,
+        "explanation": "Для кількох контекстних менеджерів використовують вкладені with або ExitStack",
+        "code": "with open('file1.txt') as f1, open('file2.txt') as f2:\n    content = f1.read() + f2.read()"
+      }
+    ]
+  },
+  "OOP in Python": {
+    "easy": [
+      {
+        "question": "Що таке клас?",
+        "options": ["Шаблон для створення об'єктів", "Функція", "Модуль", "Змінна"],
+        "answer": 0,
+        "explanation": "Клас - це шаблон, який визначає властивості та методи об'єктів",
+        "code": "class MyClass:\n    def __init__(self, name):\n        self.name = name"
+      },
+      {
+        "question": "Що таке об'єкт?",
+        "options": ["Екземпляр класу", "Функція класу", "Змінна класу", "Метод класу"],
+        "answer": 0,
+        "explanation": "Об'єкт - це конкретний екземпляр, створений на основі класу",
+        "code": "obj = MyClass('example')  # obj - об'єкт класу MyClass"
+      }
+    ],
+    "medium": [
+      {
+        "question": "Що таке наслідування?",
+        "options": ["Механізм створення нового класу на основі існуючого", "Копіювання коду класу", "Перейменування класу", "Імпорт класу"],
+        "answer": 0,
+        "explanation": "Наслідування дозволяє створювати нові класи на основі існуючих",
+        "code": "class ChildClass(ParentClass):\n    pass"
+      },
+      {
+        "question": "Що таке інкапсуляція?",
+        "options": ["Приховування внутрішньої реалізації", "Об'єднання даних і методів", "Розділення коду на частини", "Оптимізація коду"],
+        "answer": 0,
+        "explanation": "Інкапсуляція приховує внутрішню реалізацію від зовнішнього світу",
+        "code": "class MyClass:\n    def __init__(self):\n        self.__private_var = 10  # Приватна змінна"
+      }
+    ],
+    "hard": [
+      {
+        "question": "Що таке поліморфізм?",
+        "options": ["Здатність об'єктів різних класів використовувати однаковий інтерфейс", "Здатність класу мати кілька форм", "Здатність об'єкта змінювати тип", "Здатність функції приймати різні типи"],
+        "answer": 0,
+        "explanation": "Поліморфізм дозволяє об'єктам різних класів використовувати однаковий інтерфейс",
+        "code": "class Dog:\n    def sound(self):\n        return 'Woof!'\n\nclass Cat:\n    def sound(self):\n        return 'Meow!'\n\nanimals = [Dog(), Cat()]\nfor animal in animals:\n    print(animal.sound())  # Woof! Meow!"
+      },
+      {
+        "question": "Що таке MRO (Method Resolution Order)?",
+        "options": ["Порядок пошуку методів у ієрархії класів", "Метод розв'язання об'єктів", "Метод реорганізації класів", "Метод розподілу об'єктів"],
+        "answer": 0,
+        "explanation": "MRO визначає порядок пошуку методів у разі множинного наслідування",
+        "code": "class A: pass\nclass B(A): pass\nclass C(A): pass\nclass D(B, C): pass\nprint(D.__mro__)  # Порядок пошуку методів"
+      }
+    ]
+  },
+  "Exception handling": {
+    "easy": [
+      {
+        "question": "Що таке обробка винятків?",
+        "options": ["Механізм обробки помилок", "Метод відладки", "Інструмент тестування", "Спосіб оптимізації"],
+        "answer": 0,
+        "explanation": "Обробка винятків дозволяє граціозно обробляти помилки",
+        "code": "try:\n    x = 1 / 0\nexcept ZeroDivisionError:\n    print('Ділення на нуль!')"
+      },
+      {
+        "question": "Як обробити конкретний тип помилки?",
+        "options": ["Використати except з конкретним типом помилки", "Використати except без типу", "Використати try без except", "Використати finally"],
+        "answer": 0,
+        "explanation": "Конкретний тип помилки вказується після except",
+        "code": "try:\n    x = int('abc')\nexcept ValueError:\n    print('Невірне значення!')"
+      }
+    ],
+    "medium": [
+      {
+        "question": "Як створити власний виняток?",
+        "options": ["Створити клас, успадкований від Exception", "Створити функцію, яка повертає помилку", "Використати спеціальний синтаксис", "Використати модуль exceptions"],
+        "answer": 0,
+        "explanation": "Власні винятки створюються як класи, успадковані від Exception",
+        "code": "class MyError(Exception):\n    pass\n\nraise MyError('Моя помилка!')"
+      },
+      {
+        "question": "Що робить блок finally?",
+        "options": ["Виконується завжди, незалежно від помилок", "Виконується тільки при помилці", "Виконується тільки без помилок", "Виконується перед try"],
+        "answer": 0,
+        "explanation": "Блок finally виконується завжди, незалежно від того, чи виникла помилка",
+        "code": "try:\n    x = 1 / 0\nexcept ZeroDivisionError:\n    print('Помилка')\nfinally:\n    print('Цей код виконається завжди')"
+      }
+    ],
+    "hard": [
+      {
+        "question": "Що таке else в try/except?",
+        "options": ["Виконується, якщо помилок не сталося", "Виконується перед except", "Виконується після finally", "Альтернатива except"],
+        "answer": 0,
+        "explanation": "Блок else виконується, якщо в блоці try не виникло жодної помилки",
+        "code": "try:\n    x = 1 / 1\nexcept ZeroDivisionError:\n    print('Помилка')\nelse:\n    print('Помилок не було')"
+      },
+      {
+        "question": "Як отримати інформацію про помилку?",
+        "options": ["Використати as для отримання об'єкта помилки", "Використати global error", "Використати спеціальну функцію", "Використати sys.exc_info()"],
+        "answer": 0,
+        "explanation": "Ключове слово as дозволяє отримати об'єкт помилки",
+        "code": "try:\n    x = 1 / 0\nexcept ZeroDivisionError as e:\n    print(f'Помилка: {e}')"
+      }
+    ]
+  },
+  "Modules and packages": {
+    "easy": [
+      {
+        "question": "Що таке модуль?",
+        "options": ["Файл з кодом Python", "Папка з кодом Python", "Бібліотека функцій", "Набір класів"],
+        "answer": 0,
+        "explanation": "Модуль - це файл з розширенням .py, що містить код Python",
+        "code": "# module.py\ndef hello():\n    return 'Hello!'"
+      },
+      {
+        "question": "Як імпортувати модуль?",
+        "options": ["Використати import", "Використати include", "Використати require", "Використати use"],
+        "answer": 0,
+        "explanation": "Ключове слово import використовується для імпорту модулів",
+        "code": "import math\nprint(math.sqrt(16))  # 4.0"
+      }
+    ],
+    "medium": [
+      {
+        "question": "Як імпортувати конкретну функцію?",
+        "options": ["Використати from module import function", "Використати import function from module", "Використати include function", "Використати require function"],
+        "answer": 0,
+        "explanation": "Синтаксис from...import дозволяє імпортувати конкретні функції",
+        "code": "from math import sqrt\nprint(sqrt(16))  # 4.0"
+      },
+      {
+        "question": "Що таке пакет?",
+        "options": ["Папка, що містить модулі та файл __init__.py", "Файл з розширенням .pkg", "Архів модулів", "Системна бібліотека"],
+        "answer": 0,
+        "explanation": "Пакет - це папка, що містить модулі та файл __init__.py",
+        "code": "# package/\n#   __init__.py\n#   module1.py\n#   module2.py"
+      }
+    ],
+    "hard": [
+      {
+        "question": "Як створити namespace package?",
+        "options": ["Папка без __init__.py", "Папка з __namespace__.py", "Спеціальний тип модуля", "Системний пакет"],
+        "answer": 0,
+        "explanation": "Namespace package - це папка без __init__.py (Python 3.3+)",
+        "code": "# namespace_package/\n#   module1.py\n#   module2.py\n# (без __init__.py)"
+      },
+      {
+        "question": "Як динамічно імпортувати модуль?",
+        "options": ["Використати importlib", "Використати dynamic_import", "Використати exec", "Використати load_module"],
+        "answer": 0,
+        "explanation": "Модуль importlib дозволяє динамічно імпортувати модулі",
+        "code": "import importlib\nmath = importlib.import_module('math')\nprint(math.sqrt(16))  # 4.0"
+      }
+    ]
+  },
+  "File operations": {
+    "easy": [
+      {
+        "question": "Як відкрити файл для читання?",
+        "options": ["Використати open() з режимом 'r'", "Використати open() з режимом 'w'", "Використати open() з режимом 'a'", "Використати read()"],
+        "answer": 0,
+        "explanation": "Режим 'r' використовується для читання файлу",
+        "code": "with open('file.txt', 'r') as f:\n    content = f.read()"
+      },
+      {
+        "question": "Як записати дані у файл?",
+        "options": ["Використати open() з режимом 'w'", "Використати open() з режимом 'r'", "Використати open() з режимом 'a'", "Використати write() без open()"],
+        "answer": 0,
+        "explanation": "Режим 'w' використовується для запису у файл (перезаписує існуючий)",
+        "code": "with open('file.txt', 'w') as f:\n    f.write('Hello!')"
+      }
+    ],
+    "medium": [
+      {
+        "question": "Як додати дані у файл?",
+        "options": ["Використати open() з режимом 'a'", "Використати open() з режимом 'w'", "Використати open() з режимом 'r'", "Використати append()"],
+        "answer": 0,
+        "explanation": "Режим 'a' використовується для додавання даних у кінець файлу",
+        "code": "with open('file.txt', 'a') as f:\n    f.write('New line!')"
+      },
+      {
+        "question": "Як читати файл по рядках?",
+        "options": ["Використати for loop", "Використати readline()", "Використати readlines()", "Всі варіанти вірні"],
+        "answer": 3,
+        "explanation": "Існують різні способи читання файлу по рядках",
+        "code": "with open('file.txt', 'r') as f:\n    for line in f:\n        print(line)"
+      }
+    ],
+    "hard": [
+      {
+        "question": "Як працювати з JSON файлами?",
+        "options": ["Використати json модуль", "Використати спеціальний синтаксис", "Використати pickle модуль", "Використати yaml модуль"],
+        "answer": 0,
+        "explanation": "Модуль json дозволяє читати та записувати JSON файли",
+        "code": "import json\n\n# Запис\nwith open('data.json', 'w') as f:\n    json.dump({'key': 'value'}, f)\n\n# Читання\nwith open('data.json', 'r') as f:\n    data = json.load(f)"
+      },
+      {
+        "question": "Як працювати з бінарними файлами?",
+        "options": ["Використати режим 'b'", "Використати спеціальні функції", "Використати binary модуль", "Використати bytes тип"],
+        "answer": 0,
+        "explanation": "Режим 'b' використовується для роботи з бінарними файлами",
+        "code": "with open('image.jpg', 'rb') as f:\n    data = f.read()"
+      }
+    ]
+  },
+  "Regular expressions": {
+    "easy": [
+      {
+        "question": "Що таке регулярні вирази?",
+        "options": ["Спеціальні шаблони для пошуку тексту", "Метод сортування тексту", "Функція для обробки рядків", "Тип даних для тексту"],
+        "answer": 0,
+        "explanation": "Регулярні вирази - це шаблони для пошуку та маніпулювання текстом",
+        "code": "import re\npattern = r'\\d+'  # Шаблон для пошуку чисел"
+      },
+      {
+        "question": "Як знайти відповідність у тексті?",
+        "options": ["Використати re.search()", "Використати re.find()", "Використати re.match()", "Використати re.lookup()"],
+        "answer": 0,
+        "explanation": "Функція re.search() шукає першу відповідність шаблону в тексті",
+        "code": "import re\nresult = re.search(r'\\d+', 'abc123def')\nprint(result.group())  # 123"
+      }
+    ],
+    "medium": [
+      {
+        "question": "Як знайти всі відповідності?",
+        "options": ["Використати re.findall()", "Використати re.search_all()", "Використати re.find()", "Використати re.all()"],
+        "answer": 0,
+        "explanation": "Функція re.findall() повертає всі відповідності шаблону",
+        "code": "import re\nresults = re.findall(r'\\d+', 'a1b22c333')\nprint(results)  # ['1', '22', '333']"
+      },
+      {
+        "question": "Як розділити текст за шаблоном?",
+        "options": ["Використати re.split()", "Використати re.divide()", "Використати re.partition()", "Використати re.separate()"],
+        "answer": 0,
+        "explanation": "Функція re.split() розділяє текст за шаблоном",
+        "code": "import re\nparts = re.split(r'\\d+', 'a1b22c333d')\nprint(parts)  # ['a', 'b', 'c', 'd']"
+      }
+    ],
+    "hard": [
+      {
+        "question": "Як замінити текст за шаблоном?",
+        "options": ["Використати re.sub()", "Використати re.replace()", "Використати re.change()", "Використати re.swap()"],
+        "answer": 0,
+        "explanation": "Функція re.sub() заміняє відповідності шаблону на новий текст",
+        "code": "import re\nresult = re.sub(r'\\d+', 'X', 'a1b22c333')\nprint(result)  # aXbXcX"
+      },
+      {
+        "question": "Що таке групи в регулярних виразах?",
+        "options": ["Частини шаблону, взяті в круглі дужки", "Частини шаблону, взяті в квадратні дужки", "Частини шаблону, взяті в фігурні дужки", "Частини шаблону, розділені комами"],
+        "answer": 0,
+        "explanation": "Групи визначаються круглими дужками і дозволяють отримувати частини відповідності",
+        "code": "import re\nresult = re.search(r'(\\d+)-(\\d+)', '123-456')\nprint(result.groups())  # ('123', '456')"
+      }
+    ]
+  },
+  "Data structures": {
+    "easy": [
+      {
+        "question": "Які основні структури даних в Python?",
+        "options": ["Список, кортеж, словник, множина", "Масив, вектор, матриця", "Стек, черга, дерево", "Граф, хеш-таблиця"],
+        "answer": 0,
+        "explanation": "Основні вбудовані структури даних: список, кортеж, словник, множина",
+        "code": "# List\nmy_list = [1, 2, 3]\n# Tuple\nmy_tuple = (1, 2, 3)\n# Dictionary\nmy_dict = {'a': 1, 'b': 2}\n# Set\nmy_set = {1, 2, 3}"
+      },
+      {
+        "question": "Що таке список (list)?",
+        "options": ["Змінювана послідовність елементів", "Незмінювана послідовність елементів", "Неупорядкована колекція елементів", "Колекція пар ключ-значення"],
+        "answer": 0,
+        "explanation": "Список - це змінювана послідовність елементів",
+        "code": "my_list = [1, 2, 3]\nmy_list.append(4)  # [1, 2, 3, 4]"
+      }
+    ],
+    "medium": [
+      {
+        "question": "Що таке словник (dictionary)?",
+        "options": ["Колекція пар ключ-значення", "Послідовність елементів", "Неупорядкована множина елементів", "Впорядкована множина елементів"],
+        "answer": 0,
+        "explanation": "Словник - це колекція пар ключ-значення",
+        "code": "my_dict = {'name': 'John', 'age': 30}\nprint(my_dict['name'])  # John"
+      },
+      {
+        "question": "Що таке множина (set)?",
+        "options": ["Неупорядкована колекція унікальних елементів", "Упорядкована колекція елементів", "Колекція пар ключ-значення", "Послідовність елементів"],
+        "answer": 0,
+        "explanation": "Множина - це неупорядкована колекція унікальних елементів",
+        "code": "my_set = {1, 2, 3, 3, 2}  # {1, 2, 3} (унікальні елементи)"
+      }
+    ],
+    "hard": [
+      {
+        "question": "Що таке collections.defaultdict?",
+        "options": ["Словник з значенням за замовчуванням", "Спеціальний тип списку", "Розширена множина", "Оптимізований кортеж"],
+        "answer": 0,
+        "explanation": "defaultdict автоматично створює значення для нових ключів",
+        "code": "from collections import defaultdict\nd = defaultdict(int)\nd['a'] += 1  # Не викликає KeyError"
+      },
+      {
+        "question": "Що таке collections.Counter?",
+        "options": ["Підклас dict для підрахунку хешованих об'єктів", "Підклас list для підрахунку елементів", "Підклас set для підрахунку унікальних елементів", "Підклас tuple для підрахунку позицій"],
+        "answer": 0,
+        "explanation": "Counter - це словник для підрахунку кількості елементів",
+        "code": "from collections import Counter\nc = Counter(['a', 'b', 'a', 'c'])\nprint(c)  # Counter({'a': 2, 'b': 1, 'c': 1})"
+      }
+    ]
+  },
+  "Threading and multiprocessing": {
+    "easy": [
+      {
+        "question": "Що таке потік (thread)?",
+        "options": ["Легкий процес, що виконується в межах одного процесу", "Повноцінний окремий процес", "Функція, що виконується паралельно", "Метод синхронізації"],
+        "answer": 0,
+        "explanation": "Потік - це легкий процес, що виконується в межах одного процесу",
+        "code": "import threading\n\ndef worker():\n    print('Робочий потік')\n\nthread = threading.Thread(target=worker)\nthread.start()"
+      },
+      {
+        "question": "Що таке процес (process)?",
+        "options": ["Окремий екземпляр програми з власною пам'яттю", "Потік виконання в межах програми", "Функція, що виконується окремо", "Метод паралелізму"],
+        "answer": 0,
+        "explanation": "Процес - це окремий екземпляр програми з власною пам'яттю",
+        "code": "import multiprocessing\n\ndef worker():\n    print('Робочий процес')\n\nprocess = multiprocessing.Process(target=worker)\nprocess.start()"
+      }
+    ],
+    "medium": [
+      {
+        "question": "Як синхронізувати потоки?",
+        "options": ["Використати Lock", "Використати Sync", "Використати Mutex", "Використати Parallel"],
+        "answer": 0,
+        "explanation": "Lock дозволяє синхронізувати доступ до спільних ресурсів",
+        "code": "import threading\n\nlock = threading.Lock()\n\ndef worker():\n    with lock:\n        # Критична секція\n        pass"
+      },
+      {
+        "question": "Що таке GIL (Global Interpreter Lock)?",
+        "options": ["Механізм, що блокує виконання кількох потоків одночасно", "Механізм для синхронізації процесів", "Механізм для керування пам'яттю", "Механізм для оптимізації коду"],
+        "answer": 0,
+        "explanation": "GIL блокує виконання кількох потоків одночасно в CPython",
+        "code": "# GIL обмежує паралелізм потоків в CPU-bound задачах"
+      }
+    ],
+    "hard": [
+      {
+        "question": "Як використати пул потоків?",
+        "options": ["Використати ThreadPoolExecutor", "Використати ThreadPool", "Використати Pool", "Використати ConcurrentPool"],
+        "answer": 0,
+        "explanation": "ThreadPoolExecutor надає пул потоків для паралельного виконання",
+        "code": "from concurrent.futures import ThreadPoolExecutor\n\ndef worker(x):\n    return x * x\n\nwith ThreadPoolExecutor() as executor:\n    results = executor.map(worker, [1, 2, 3])\n    print(list(results))  # [1, 4, 9]"
+      },
+      {
+        "question": "Як використати пул процесів?",
+        "options": ["Використати ProcessPoolExecutor", "Використати ProcessPool", "Використати MultiprocessingPool", "Використати ParallelPool"],
+        "answer": 0,
+        "explanation": "ProcessPoolExecutor надає пул процесів для паралельного виконання",
+        "code": "from concurrent.futures import ProcessPoolExecutor\n\ndef worker(x):\n    return x * x\n\nwith ProcessPoolExecutor() as executor:\n    results = executor.map(worker, [1, 2, 3])\n    print(list(results))  # [1, 4, 9]"
+      }
+    ]
+  },
+  "Database access": {
+    "easy": [
+      {
+        "question": "Як підключитися до бази даних в Python?",
+        "options": ["Використати відповідний драйвер бази даних", "Використати вбудований модуль database", "Використати стандартний інтерфейс", "Використати ORM"],
+        "answer": 0,
+        "explanation": "Для різних БД використовують різні драйвери (sqlite3, psycopg2, mysql-connector)",
+        "code": "import sqlite3\nconn = sqlite3.connect('example.db')"
+      },
+      {
+        "question": "Що таке SQLite?",
+        "options": ["Вбудована база даних без сервера", "Хмарна база даних", "Реляційна база даних з сервером", "NoSQL база даних"],
+        "answer": 0,
+        "explanation": "SQLite - вбудована база даних, що не потребує окремого сервера",
+        "code": "import sqlite3\nconn = sqlite3.connect(':memory:')  # База даних в пам'яті"
+      }
+    ],
+    "medium": [
+      {
+        "question": "Що таке ORM?",
+        "options": ["Техніка для роботи з БД через об'єкти", "Мова запитів до бази даних", "Тип бази даних", "Метод оптимізації запитів"],
+        "answer": 0,
+        "explanation": "ORM (Object-Relational Mapping) дозволяє працювати з БД через об'єкти",
+        "code": "# SQLAlchemy - популярний ORM для Python\nfrom sqlalchemy import create_engine, Column, Integer, String\nfrom sqlalchemy.ext.declarative import declarative_base\n\nBase = declarative_base()\n\nclass User(Base):\n    __tablename__ = 'users'\n    id = Column(Integer, primary_key=True)\n    name = Column(String)"
+      },
+      {
+        "question": "Як виконати SQL запит?",
+        "options": ["Використати cursor.execute()", "Використати connection.query()", "Використати database.execute()", "Використати sql.run()"],
+        "answer": 0,
+        "explanation": "Метод cursor.execute() виконує SQL запит",
+        "code": "import sqlite3\n\nconn = sqlite3.connect('example.db')\ncursor = conn.cursor()\ncursor.execute('CREATE TABLE users (id INTEGER, name TEXT)')\nconn.commit()"
+      }
+    ],
+    "hard": [
+      {
+        "question": "Що таке SQL injection?",
+        "options": ["Вразливість безпеки через невідфільтровані дані", "Метод оптимізації запитів", "Тип транзакції в БД", "Метод резервного копіювання"],
+        "answer": 0,
+        "explanation": "SQL injection - це вразливість, коли зловмисник може виконувати довільні SQL команди",
+        "code": "# НЕБЕЗПЕЧНО:\ncursor.execute(f\"SELECT * FROM users WHERE name = '{user_input}'\")\n\n# БЕЗПЕЧНО:\ncursor.execute(\"SELECT * FROM users WHERE name = ?\", (user_input,))"
+      },
+      {
+        "question": "Що таке транзакції?",
+        "options": ["Група операцій, що виконуються як єдине ціле", "Тип запиту до БД", "Метод індексації", "Спосіб з'єднання з БД"],
+        "answer": 0,
+        "explanation": "Транзакції гарантують, що група операцій виконається повністю або не виконається взагалі",
+        "code": "try:\n    cursor.execute('INSERT INTO users VALUES (1, \"John\")')\n    cursor.execute('INSERT INTO users VALUES (2, \"Jane\")')\n    conn.commit()  # Підтверджуємо транзакцію\nexcept:\n    conn.rollback()  # Відкатуємо транзакцію при помилці"
+      }
+    ]
+  },
+  "Web frameworks": {
+    "easy": [
+      {
+        "question": "Що таке веб-фреймворк?",
+        "options": ["Набір інструментів для розробки веб-додатків", "Веб-сервер", "Мова розмітки", "База даних"],
+        "answer": 0,
+        "explanation": "Веб-фреймворк надає інструменти для розробки веб-додатків",
+        "code": "# Flask - легкий веб-фреймворк\nfrom flask import Flask\napp = Flask(__name__)\n\n@app.route('/')\ndef hello():\n    return 'Hello World!'"
+      },
+      {
+        "question": "Які популярні Python веб-фреймворки?",
+        "options": ["Django, Flask, FastAPI", "Spring, Express, Ruby on Rails", "Laravel, Symfony, CakePHP", "ASP.NET, Express, Angular"],
+        "answer": 0,
+        "explanation": "Популярні Python веб-фреймворки: Django, Flask, FastAPI",
+        "code": "# Django - повноцінний фреймворк\n# Flask - мікрофреймворк\n# FastAPI - сучасний фреймворк для API"
+      }
+    ],
+    "medium": [
+      {
+        "question": "Що таке маршрутизація (routing)?",
+        "options": ["Визначення який код виконувати для певного URL", "Напрямок трафіку в мережі", "Сортування даних", "Оптимізація швидкості"],
+        "answer": 0,
+        "explanation": "Маршрутизація визначає який код виконувати для кожного URL",
+        "code": "from flask import Flask\napp = Flask(__name__)\n\n@app.route('/users/<id>')\ndef get_user(id):\n    return f'User {id}'"
+      },
+      {
+        "question": "Що таке шаблонізація?",
+        "options": ["Генерація HTML з динамічними даними", "Стилізація веб-сторінок", "Оптимізація коду", "Створення макетів"],
+        "answer": 0,
+        "explanation": "Шаблонізація дозволяє генерувати HTML з динамічними даними",
+        "code": "# Jinja2 - популярний движок шаблонів для Flask\nfrom flask import render_template\n\n@app.route('/user/<name>')\ndef hello(name):\n    return render_template('user.html', name=name)"
+      }
+    ],
+    "hard": [
+      {
+        "question": "Що таке middleware?",
+        "options": ["Проміжний шар для обробки запитів/відповідей", "Основний шар додатка", "База даних", "Кешування"],
+        "answer": 0,
+        "explanation": "Middleware обробляє запити та відповіді перед основним обробником",
+        "code": "# Middleware в FastAPI\nfrom fastapi import FastAPI\nfrom fastapi.middleware.httpsredirect import HTTPSRedirectMiddleware\n\napp = FastAPI()\napp.add_middleware(HTTPSRedirectMiddleware)"
+      },
+      {
+        "question": "Що таке DI (Dependency Injection)?",
+        "options": ["Паттерн для передачі залежностей ззовні", "Метод ін'єкції коду", "Тип бази даних", "Метод шифрування"],
+        "answer": 0,
+        "explanation": "Dependency Injection дозволяє передавати залежності ззовні, а не створювати їх всередині",
+        "code": "# FastAPI має вбудовану підтримку DI\nfrom fastapi import Depends\n\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()\n\n@app.get('/users')\ndef read_users(db: Session = Depends(get_db)):\n    return db.query(User).all()"
+      }
+    ]
+  },
+  "Testing in Python": {
+    "easy": [
+      {
+        "question": "Що таке модульне тестування?",
+        "options": ["Тестування окремих компонентів програми", "Тестування всієї програми", "Тестування інтерфейсу", "Тестування продуктивності"],
+        "answer": 0,
+        "explanation": "Модульне тестування перевіряє окремі компоненти (модулі) програми",
+        "code": "import unittest\n\nclass TestMath(unittest.TestCase):\n    def test_add(self):\n        self.assertEqual(1 + 1, 2)"
+      },
+      {
+        "question": "Який модуль для тестування в Python?",
+        "options": ["unittest", "testing", "test", "pytest"],
+        "answer": 0,
+        "explanation": "unittest - вбудований модуль для тестування в Python",
+        "code": "import unittest\n\nclass TestExample(unittest.TestCase):\n    def test_example(self):\n        self.assertTrue(True)"
+      }
+    ],
+    "medium": [
+      {
+        "question": "Що таке mock-об'єкти?",
+        "options": ["Заглушки для імітації реальних об'єктів", "Реальні об'єкти для тестування", "Спеціальні типи даних", "Об'єкти для налагодження"],
+        "answer": 0,
+        "explanation": "Mock-об'єкти імітують реальні об'єкти для ізоляції тестів",
+        "code": "from unittest.mock import Mock\n\nmock = Mock()\nmock.method.return_value = 42\nprint(mock.method())  # 42"
+      },
+      {
+        "question": "Що таке pytest?",
+        "options": ["Популярний фреймворк для тестування", "Вбудований модуль Python", "Інструмент для покриття коду", "Система збірки"],
+        "answer": 0,
+        "explanation": "pytest - популярний фреймворк для тестування з простим синтаксисом",
+        "code": "# test_example.py\ndef test_add():\n    assert 1 + 1 == 2\n\n# Запуск: pytest test_example.py"
+      }
+    ],
+    "hard": [
+      {
+        "question": "Що таке параметризовані тести?",
+        "options": ["Тести з різними вхідними даними", "Тести з параметрами конфігурації", "Тести з змінними налаштуваннями", "Тести з динамічними даними"],
+        "answer": 0,
+        "explanation": "Параметризовані тести дозволяють запускати один тест з різними вхідними даними",
+        "code": "import pytest\n\n@pytest.mark.parametrize('input,expected', [(1, 2), (2, 3), (3, 4)])\ndef test_increment(input, expected):\n    assert input + 1 == expected"
+      },
+      {
+        "question": "Що таке fixture в pytest?",
+        "options": ["Функція для підготовки тестових даних", "Тип тесту", "Метод запуску тестів", "Інструмент аналізу"],
+        "answer": 0,
+        "explanation": "Fixture надає тестові дані та підготовлює середовище для тестів",
+        "code": "import pytest\n\n@pytest.fixture\ndef sample_data():\n    return [1, 2, 3, 4, 5]\n\ndef test_sum(sample_data):\n    assert sum(sample_data) == 15"
+      }
+    ]
+  }
+}

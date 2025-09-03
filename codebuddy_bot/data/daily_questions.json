@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "question": "Що виведе цей код?",
+        "code": "def f(x=[]):\n    x.append(1)\n    return x\n\nprint(f())\nprint(f())",
+        "options": ["[1]", "[1, 1]", "[1][1]", "Error"],
+        "answer": 1,
+        "explanation": "Список зберігається між викликами - mutable default"
+    },
+    {
+    "id": 2,
+    "question": "Що виведе цей код",
+    "code": "def f():\n return [lambda x: x*i for i in range(3)]\n\nprint([g(2) for g in f()]);",
+    "options": ["[0, 2, 4]", "[4, 4, 4]", "[2, 2, 2]", "[0, 1, 2]"],
+    "answer": 1,
+    "explanation": "Кожна lambda пам'ятає останнє значення і - замикання"
+    },
+    {
+        "id": 3,
+        "question": "Що виведе цей код?",
+        "code": "def gen():\n    yield 1\n    yield 2\n\nprint(list(gen()))",
+        "options": ["[1, 2]", "[1]", "[2]", "Error"],
+        "answer": 0,
+        "explanation": "Генератор повертає по черзі -> list(gen()) = [1, 2]"
+    },
+    {
+        "id": 4,
+        "question": "Що виведе цей код?",
+        "code": "try:\n    1 / 0\nexcept ZeroDivisionError:\n    print('Oops')\nfinally:\n    print('Done')",
+        "options": ["Oops", "Done", "Oops Done", "Error"],
+        "answer": 2,
+        "explanation": "except ловить помилку -> 'Oops', finally завжди виконується -> 'Done'"
+    },
+    {
+        "id": 5,
+        "question": "Що виведе цей код?",
+        "code": "x = [1, 2, 3]\nprint(x[::2])",
+        "options": ["[1, 2]", "[1, 3]", "[2, 3]", "[3, 1]"],
+        "answer": 1,
+        "explanation": "Слайс [::2] бере кожен другий елемент -> [1, 3]"
+    }
+]

@@ -205,3 +205,11 @@ config_local.py - ігнорувати ваш файл конфігурації,
 venv/, .venv/ - ігнорувати папку віртуального оточення. Бібліотеки встановлюються окремо на кожному комп'ютері за допомогою requirements.txt.
 
 __pycache__/, *.pyc - ігнорувати тимчасові кешовані файли Python, які створюються автоматично під час запуску програми.
+
+
+# Створіть файл .gitignore
+echo "config_local.py" >> .gitignore
+echo "codebuddy.db" >> .gitignore
+echo ".venv/" >> .gitignore
+echo "__pycache__/" >> .gitignore
+echo "*.pyc" >> .gitignore
